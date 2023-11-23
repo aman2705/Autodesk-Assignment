@@ -13,3 +13,7 @@ Mautodesk/src/test/java/com/assignment/autodesk/services/ReplyServiceTest.java,
 Oautodesk/src/main/java/com/assignment/autodesk/controllers/ReplyController.java,b\8\b82805d594952dce994c9464fafb31e620ff0a56
 ƒ
 Sautodesk/src/test/java/com/assignment/autodesk/Controllers/ReplyControllerTest.java,7\a\7aaa9b950f31a3753442585b1770621b85048b00
+|
+Lautodesk/src/test/java/com/assignment/autodesk/AutodeskApplicationTests.java,9\e\9e7ac5818ab057473ddcd8cff8456b286c930735
+
+Oautodesk/src/main/java/com/assignment/autodesk/exception/EncodingException.java,6\e\6e641d599f1125abd90fd3debeca628425a41c78

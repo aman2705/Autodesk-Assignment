@@ -3,46 +3,47 @@ package com.assignment.autodesk.Controllers;
 import com.assignment.autodesk.controllers.ReplyController;
 import com.assignment.autodesk.model.ReplyMessage;
 import com.assignment.autodesk.services.ReplyService;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.lenient;
+import static org.junit.jupiter.api.Assertions.assertEquals;;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class ReplyControllerTest {
+class ReplyControllerTest {
     @Mock
-    private ReplyService replyService;
-    @InjectMocks
-    private ReplyController replyController;
+    ReplyService replyService = Mockito.mock(ReplyService.class);
 
-    @BeforeEach
-    public void setup(){
-        lenient().when(replyService.isValidString(any())).thenReturn(true);
-        lenient().when(replyService.processString("11", "aman")).thenReturn("aman");
+    @InjectMocks
+    ReplyController replyController;
+
+    @Test
+    public void testProcessStringV2WithInvalidInput() {
+        String invalidInput = "13-aman";
+        when(replyService.isValidString(invalidInput)).thenReturn(false);
+
+        ResponseEntity<ReplyMessage> responseEntity = replyController.processStringV2(invalidInput);
+
+        assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
+        assertEquals("Invalid input", responseEntity.getBody().getMessage());
     }
 
     @Test
-    public void processStringV2_WithValidInput_Returns200() {
+    public void testProcessStringV2WithValidInput() {
+        String validInput = "11-aman";
+        when(replyService.isValidString(validInput)).thenReturn(true);
+        when(replyService.processString("11", "aman")).thenReturn("aman");
 
-        // Arrange
-        String request = "11-aman";
-        String expectedResponse = "aman";
+        ResponseEntity<ReplyMessage> responseEntity = replyController.processStringV2(validInput);
 
-        // Act
-        ResponseEntity<ReplyMessage> actualResponseEntity = replyController.processStringV2(request);
-
-        // Assert
-        Assertions.assertEquals(HttpStatus.OK, actualResponseEntity.getStatusCode());
-        Assertions.assertEquals(expectedResponse, actualResponseEntity.getBody().getMessage().toString());
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+        assertEquals("aman", responseEntity.getBody().getMessage());
     }
 
 

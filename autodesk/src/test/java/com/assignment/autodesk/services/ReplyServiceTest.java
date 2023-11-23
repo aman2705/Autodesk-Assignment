@@ -7,10 +7,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
-public class ReplyServiceTest {
+class ReplyServiceTest {
 
     @Test
-    public void testProcessString() {
+    void testProcessString() {
         // Test valid input
         ReplyService service = new ReplyService();
         String result = service.processString("12", "test123");
@@ -19,7 +19,7 @@ public class ReplyServiceTest {
     }
 
     @Test
-    public void testIsValidString() {
+    void testIsValidString() {
         ReplyService service = new ReplyService();
 
         // Test valid input
@@ -33,7 +33,7 @@ public class ReplyServiceTest {
     }
 
     @Test
-    public void testIsInValidString() {
+    void testIsInValidString() {
         ReplyService service = new ReplyService();
 
         // Test Invalid input

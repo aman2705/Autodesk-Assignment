@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class ReplyController {
 
+
     @Autowired
-    public ReplyService replyService;
+    private  ReplyService replyService;
 
     @GetMapping("/v2/{request}")
     public ResponseEntity<ReplyMessage> processStringV2(@PathVariable String request) {
@@ -25,7 +26,7 @@ public class ReplyController {
             return ResponseEntity.badRequest().body(errorMessage);
         }
 
-        String arr[]=request.split("-");
+        String[] arr=request.split("-");
         String rule=arr[0];
         String string=arr[1];
         // Valid input - Process the string

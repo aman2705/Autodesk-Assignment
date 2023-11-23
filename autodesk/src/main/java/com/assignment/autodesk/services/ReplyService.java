@@ -1,5 +1,6 @@
 package com.assignment.autodesk.services;
 
+import com.assignment.autodesk.exception.EncodingException;
 import org.springframework.stereotype.Service;
 import javax.xml.bind.DatatypeConverter;
 import java.nio.charset.StandardCharsets;
@@ -40,8 +41,7 @@ public class ReplyService {
             byte[] digest = md.digest(string.getBytes(StandardCharsets.UTF_8));
             return DatatypeConverter.printHexBinary(digest).toLowerCase();
         } catch (Exception e) {
-            // Should never happen since MD5 is a required algorithm in Java
-            throw new RuntimeException("Failed to encode string", e);
+            throw new EncodingException("Failed to encode string");
         }
     }
 
