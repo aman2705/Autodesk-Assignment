@@ -6,10 +6,12 @@ This Maven application can be easily set up and run with the following steps:
 
 Step 1. Clone the repository to your local machine  
 
+Step 2.Build the Project  
 mvn install  
-Step 2. Run the application
 
-mvn spring-boot:run  
+Step 3. Run the application
+mvn spring-boot:run    
+
 The application will be up and running on http://localhost:9001  
 
 Request URL  
