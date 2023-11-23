@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/v2/reply/")
 @RequiredArgsConstructor
 public class ReplyController {
 
@@ -16,7 +16,7 @@ public class ReplyController {
     @Autowired
     private  ReplyService replyService;
 
-    @GetMapping("/v2/{request}")
+    @GetMapping("{request}")
     public ResponseEntity<ReplyMessage> processStringV2(@PathVariable String request) {
 
         boolean isValid = replyService.isValidString(request);
