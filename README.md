@@ -20,4 +20,17 @@ To get the response from the running application, make a GET request to the foll
 http://localhost:9001/api/v2/{request}  
 This will return the appropriate response for the given request.  
 
+Sample Responses:-
+![Alt text](image.png)  
+
+![Alt text](image-1.png)
+
+![Alt text](image-2.png)
+
+![Alt text](image-3.png)
+
+![Alt text](image-4.png)
+
+![Alt text](image-5.png)
+
 Thank you!
