@@ -12,6 +12,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.util.Objects;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;;
 import static org.mockito.Mockito.when;
 
@@ -31,7 +33,7 @@ class ReplyControllerTest {
         ResponseEntity<ReplyMessage> responseEntity = replyController.processStringV2(invalidInput);
 
         assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
-        assertEquals("Invalid input", responseEntity.getBody().getMessage());
+        assertEquals("Invalid input", Objects.requireNonNull(responseEntity.getBody()).getMessage());
     }
 
     @Test
@@ -43,7 +45,7 @@ class ReplyControllerTest {
         ResponseEntity<ReplyMessage> responseEntity = replyController.processStringV2(validInput);
 
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-        assertEquals("aman", responseEntity.getBody().getMessage());
+        assertEquals("aman", Objects.requireNonNull(responseEntity.getBody()).getMessage());
     }
 
 
